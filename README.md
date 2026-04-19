@@ -1,12 +1,16 @@
 # Método de Euler para EDOs Lineares
 
-Resolvedor numérico para equações diferenciais ordinárias lineares de primeira e talvez segunda ordem, homogêneas, não homogêneas e com coeficientes constantes usando o Método de Euler.
+Resolvedor numérico para equações diferenciais ordinárias lineares de primeira e segunda ordem, homogêneas, não homogêneas e com coeficientes constantes usando o Método de Euler.
 
 ## Equações suportadas, até agora
 
-y' + p(x)y = q(x)
+y'(x) + p(x)y(x) = q(x)
 
-onde p(x) e q(x) são ~~funções de potência~~ qualquer função real!!
+Onde p(x) e q(x) são ~~funções de potência~~ qualquer função real!!
+
+y''(x) + ay'(x) + by(x) = r(x)
+
+Onde a e b são coeficientes constantes e r(x) é qualquer função real. Pode ser 0, no caso homogêneo
 
 ## Instalação
 
@@ -21,33 +25,37 @@ uv sync
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
-from equations.euler_1st_order import EulersMethodLinearDE1stOrder
+from equations.eulers_method import EulersMethodLinearDE1stOrder, EulersMethodLinearDE2ndOrder
 
-eq = EulersMethodLinearDE1stOrder()
-eq.h = 0.01     # tamanho de passos. precisa ser definido antes de x
-eq.x = (0, 10)      # inicio, fim
-eq.p = lambda x: 3      #f unção lambda para praticidade
-eq.q = lambda x: 15 * np.sin(2 * x)     # same
-eq.set_y(0)     # valor de y(0)
-eq.plot_func("my graph")       #nome do grafico
+if __name__ == "__main__":
+
+    eq1 = EulersMethodLinearDE1stOrder()
+    eq1.h = 0.01     # tamanho de passos. precisa ser definido antes de x
+    eq1.x = (0, 10)      # inicio, fim
+    eq1.p = lambda x: 3      # função lambda para praticidade
+    eq1.q = lambda x: 15 * np.sin(2 * x)     # same
+    eq1.set_y(0)     # valor de y(0)
+    eq1.plot_func("linear ordem 1")       #nome do grafico
+
+    eq2 = EulersMethodLinearDE2ndOrder()
+    eq2.h = 0.001
+    eq2.x = (0, 10)
+    eq2.a = 3
+    eq2.b = 2
+    eq2.r = lambda x: 0
+    eq2.set_y(1, 0)
+    eq2.plot_func("linear ordem 2 homo")
 ```
 
 ## Se quiser comparar com analítica
 
 ```python
-# solução analítica
+from utils.plot import plot_comparision
 
-x = np.arange(0, 10, 0.01)
-y_analitica = ((45 * np.sin(2 * x) - 30 * np.cos(2 * x)) + 30*(np.exp(x * (-3))))/13
+# solução analítica, varia para cada EDO
+y1_analitica = ((45 * np.sin(2 * eq1.x) - 30 * np.cos(2 * eq1.x)) + 30*(np.exp(eq1.x * (-3))))/13
 
-plt.plot(eq.x, eq.y, label='Euler')
-plt.plot(x, y_analitica, '--', label='Analítica')
-plt.xlabel('x')
-plt.ylabel('y')
-plt.title('Euler vs Analítica')
-plt.legend()
-plt.grid(True)
-plt.savefig('comparacao.png')
+plot_comparision(eq1, y1_analitica, 'primeirograu')
 ```
 
 ## Execute com:
