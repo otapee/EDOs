@@ -16,6 +16,7 @@ uv sync
 
 ## Uso
 
+```python
 from equations.linear_1st_order import LinearDE1stOrder
 
 eq = LinearDE1stOrder()
@@ -25,6 +26,7 @@ eq.const_list = [2, 1]
 eq.power_list = [-1, 1]
 eq.set_y(1)
 eq.plot_func("minha_equacao")
+```
 
 ## Dependências
 
