@@ -5,7 +5,7 @@ from utils.plot import plot_comparision
 if __name__ == "__main__":
 
     eq1 = EulersMethodLinearDE1stOrder()
-    eq1.h = 0.01
+    eq1.h = 0.001
     eq1.x = (0, 10)
     eq1.p = lambda x: 3
     eq1.q = lambda x: 15 * np.sin(2 * x)
@@ -14,7 +14,6 @@ if __name__ == "__main__":
 
     # solução analítica
     y1_analitica = ((45 * np.sin(2 * eq1.x) - 30 * np.cos(2 * eq1.x)) + 30*(np.exp(eq1.x * (-3))))/13
-
 
     eq2 = EulersMethodLinearDE2ndOrder()
     eq2.h = 0.001
@@ -27,5 +26,5 @@ if __name__ == "__main__":
     # solucao analitica
     y2_analitica = 2 * np.exp(-eq2.x) - np.exp(-2*eq2.x)
 
-    plot_comparision(eq1, y1_analitica, 'primeirograu')
+    plot_comparision(eq1, y1_analitica, 'RLC', 'Tempo[s]', 'Corrente[A]')
     plot_comparision(eq2, y2_analitica, 'mola')

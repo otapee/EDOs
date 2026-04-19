@@ -55,7 +55,7 @@ from utils.plot import plot_comparision
 # solução analítica, varia para cada EDO
 y1_analitica = ((45 * np.sin(2 * eq1.x) - 30 * np.cos(2 * eq1.x)) + 30*(np.exp(eq1.x * (-3))))/13
 
-plot_comparision(eq1, y1_analitica, 'primeirograu')
+plot_comparision(eq1, y1_analitica, 'primeirograu', 'Tempo[s]', 'Corrente[A]')
 ```
 
 ## Execute com:
