@@ -24,5 +24,5 @@ class EulersMethodLinearDE(GraphR2, ABC):
         self._y.append(y0)
         i = 1
         while i < len(self.x):
-            self._y.append(self._y[i-1] + self.f(self.x[i-1], self._y[i-1])*self.h)
+            self._y.append(self.y[i-1] + self.f(self.x[i-1], self.y[i-1])*self.h)
             i+=1

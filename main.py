@@ -14,7 +14,7 @@ eq.plot_func("func4")
 x = np.arange(1, 10, 0.01)
 y_analitica = x - 1 + np.exp(-x)
 
-plt.plot(eq.x, eq._y, label='Euler')
+plt.plot(eq.x, eq.y, label='Euler')
 plt.plot(x, y_analitica, '--', label='Analítica')
 plt.xlabel('x')
 plt.ylabel('y')

@@ -6,7 +6,7 @@ class GraphR2(ABC):
 
     def __init__(self):
         self.__x = None
-        self._y = None
+        self._y = None      # protegido, acessível nas subclasses
 
     @property
     def x(self):
