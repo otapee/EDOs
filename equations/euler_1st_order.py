@@ -21,7 +21,5 @@ class EulersMethodLinearDE1stOrder(GraphR2, LinearDE1stOrder):
         i = 1
         while i < len(self.x):
 
-            #print(f"x={self.x[i-1]:.3f} y={self._y[i-1]:.6f} f={self.f(self.x[i-1], self._y[i-1]):.6f}")
-
             self._y.append(self._y[i-1] + self.f(self.x[i-1], self._y[i-1])*self.h)
             i+=1
