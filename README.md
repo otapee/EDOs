@@ -10,9 +10,11 @@ onde p(x) e q(x) são funções de potência.
 
 ## Instalação
 
+```bash
 git clone https://github.com/otapee/EDOs.git
 cd euler-project
 uv sync
+```
 
 ## Uso
 
@@ -27,7 +29,9 @@ eq.power_list = [-1, 1]
 eq.set_y(1)
 eq.plot_func("minha_equacao")
 ```
+```bash
 uv run python main.py
+```
 
 ## Dependências
 
