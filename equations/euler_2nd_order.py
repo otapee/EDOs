@@ -6,4 +6,4 @@ class EulersMethodLinearDE2ndOrder(EulersMethodLinearDE, ABC):
     def __init__(self):
         super().__init__()
 
-    
+

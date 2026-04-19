@@ -14,8 +14,10 @@ class GraphR2(ABC):
 
     @x.setter
     def x(self, parameters):
-        start, end, h = parameters             # unpacking da tupla parameters
-        self.__x = np.arange(start, end, h)    # n_points pontos entre start e end
+
+        if self.h is not None:
+            start, end, = parameters        # unpacking da tupla parameters
+            self.__x = np.arange(start, end, self.h)      # n_points pontos entre start e end
 
     @property
     def y(self):

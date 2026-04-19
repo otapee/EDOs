@@ -1,33 +1,27 @@
-from equations.euler_1st_order import EulersMethodLinearDE1stOrder
+from abc import ABC
 
-class LinearDE1stOrder(EulersMethodLinearDE1stOrder):
+class LinearDE1stOrder(ABC):
 
     def __init__(self):
         super().__init__()
-        self.__const_list = []
-        self.__power_list = []
+        self.__p = None
+        self.__q = None
         
     @property
-    def const_list(self):
-        return self.__const_list
+    def p(self):
+        return self.__p
 
-    @const_list.setter
-    def const_list(self, list):
-        self.__const_list = [value for value in list]
+    @p.setter
+    def p(self, lambda_function):
+        self.__p = lambda_function
 
     @property
-    def power_list(self):
-        return self.__power_list
+    def q(self):
+        return self.__q
 
-    @power_list.setter
-    def power_list(self, list):
-        self.__power_list = [value for value in list]
+    @q.setter
+    def q(self, lambda_function):
+        self.__q = lambda_function
 
-    def p(self, x_i):
-        return self.const_list[0]*((x_i)**self.power_list[0])
-
-    def q(self, x_i):
-        return self.const_list[1]*((x_i)**self.power_list[1])
-
-    def f(self, x_i, y_i):
-        return self.q(x_i) - self.p(x_i)*y_i
+    def f(self, x, y):
+        return self.q(x) - self.p(x)*y

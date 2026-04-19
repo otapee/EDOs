@@ -1,15 +1,27 @@
-from abc import ABC, abstractmethod
-from equations.euler_base import EulersMethodLinearDE
+from graph.graph_base import GraphR2
+from equations.linear_1st_order import LinearDE1stOrder
 
-class EulersMethodLinearDE1stOrder(EulersMethodLinearDE, ABC):
+class EulersMethodLinearDE1stOrder(GraphR2, LinearDE1stOrder):
 
     def __init__(self):
         super().__init__()
+        self.__h = None
+    
+    @property
+    def h(self):
+        return self.__h
+
+    @h.setter
+    def h(self, value):
+        self.__h = value
     
     def set_y(self, y0):
         self._y = []
         self._y.append(y0)
         i = 1
         while i < len(self.x):
-            self._y.append(self.y[i-1] + self.f(self.x[i-1], self.y[i-1])*self.h)
+
+            #print(f"x={self.x[i-1]:.3f} y={self._y[i-1]:.6f} f={self.f(self.x[i-1], self._y[i-1]):.6f}")
+
+            self._y.append(self._y[i-1] + self.f(self.x[i-1], self._y[i-1])*self.h)
             i+=1
