@@ -1,6 +1,6 @@
-from equations.euler_base import EulersMethodLinearDE
+from equations.euler_1st_order import EulersMethodLinearDE1stOrder
 
-class LinearDE1stOrder(EulersMethodLinearDE):
+class LinearDE1stOrder(EulersMethodLinearDE1stOrder):
 
     def __init__(self):
         super().__init__()

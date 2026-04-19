@@ -19,10 +19,6 @@ class EulersMethodLinearDE(GraphR2, ABC):
     def f(self):
         pass
 
+    @abstractmethod
     def set_y(self, y0):
-        self._y = []
-        self._y.append(y0)
-        i = 1
-        while i < len(self.x):
-            self._y.append(self.y[i-1] + self.f(self.x[i-1], self.y[i-1])*self.h)
-            i+=1
+        pass
